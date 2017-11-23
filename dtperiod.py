@@ -10,7 +10,7 @@ from datetime import date, timedelta
 from copy import deepcopy
 
 
-__version__ = '0.1.0'
+__version__ = '0.1.1'
 __all__ = ['Period']
 
 
@@ -54,9 +54,13 @@ class Period(Mapping):
         return (self._start, self._stop)
 
     def __repr__(self):
+        try:
+            cls_name = Period.__qualname__
+        except AttributeError:
+            cls_name = Period.__name__
         return '{module}.{cls}(start={start!r}, stop={stop!r})'.format(
             module=Period.__module__,
-            cls=Period.__qualname__,
+            cls=cls_name,
             start=self._start,
             stop=self._stop,
         )
